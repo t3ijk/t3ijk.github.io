@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Open Simplenote</title>
+    <style>
+        .launch-btn {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .launch-btn:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="simplenoteBtn" class="launch-btn">1s... Simplenote</button>
+
+    <script>
+        document.getElementById('simplenoteBtn').addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerText;
+            
+            btn.disabled = true;
+            btn.innerText = "1s...";
+
+            setTimeout(function() {
+                window.location.href = 'simplenote://'; 
+                btn.disabled = false;
+                btn.innerText = originalText;
+            }, 1000); 
+        });
+    </script>
+
+</body>
+</html>
